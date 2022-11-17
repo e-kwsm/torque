@@ -1,4 +1,4 @@
-#!/usr/bin/pbs_tclsh
+#!/usr/bin/env pbs_tclsh
 #         OpenPBS (Portable Batch System) v2.3 Software License
 # 
 # Copyright (c) 1999-2000 Veridian Information Solutions, Inc.
