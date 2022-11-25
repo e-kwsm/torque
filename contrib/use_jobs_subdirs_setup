@@ -66,7 +66,7 @@ def get_file_num(myfilename):
     m = re.search('^\d*(\d)[^\d]', myfilename)
     try:
         return m.group(1)
-    except:
+    except Exception:
         return None
 # end get_file_num()
 
@@ -74,12 +74,12 @@ def move_file_clean(src_file, dst_file):
     # remove the destination file if it exists
     try:
         os.remove(dst_file)
-    except:
+    except Exception:
         pass
     # move the file
     try:
         shutil.move(src_file, dst_file)
-    except:
+    except Exception:
         sys.stderr.write("Could not move " + src_file + " to " + dst_file + "\n")
 
 # moves all files from Path mypath

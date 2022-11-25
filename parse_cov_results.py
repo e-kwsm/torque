@@ -25,7 +25,7 @@ def process_file(file, report):
         except IOError as (errno, strerror):
             print "'{0}' I/O error({1}): {2}".format(file,errno, strerror)
             return
-        except:
+        except Exception:
             print "Unexpected error:", sys.exc_info()[0]
             return
     else:
