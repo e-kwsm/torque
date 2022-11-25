@@ -32,11 +32,11 @@ def get_testdirs(dir):
 def merge_lists(orig_list, path, new_list):
   for item in new_list:
     new_item = item
-    if path != None:
+    if path is not None:
       new_item = path
       new_item += "/"
       new_item += item
-    if orig_list == None:
+    if orig_list is None:
       orig_list = [new_item]
     else:
       orig_list.append(new_item)
@@ -61,7 +61,7 @@ def get_data(dir, dir_list, src_list):
       except ValueError:
         pass
 
-  if tmp_list == None:
+  if tmp_list is None:
     return None
 
   for pos in range(len(tmp_list)):
@@ -71,11 +71,11 @@ def get_data(dir, dir_list, src_list):
     if "test" in tmp_list[pos]:
       add_c_file_list(dir, src_list)
       tmp_entries = get_testdirs(tmp_dir)
-      if tmp_entries != None:
+      if tmp_entries is not None:
         test_dir_list = merge_lists(dir_list, tmp_dir, tmp_entries)
     else:
       tmp_entries = get_data(tmp_dir, dir_list, src_list)
-      if tmp_entries != None:
+      if tmp_entries is not None:
         test_dir_list = merge_lists(dir_list, None, tmp_entries)
 
 # Return a list of directores in the unit test directory, each directory representing a src file

@@ -18,7 +18,7 @@ loc_pat = re.compile(r"Entering directory `(.*)'$")
 # argument:  Diction to store results from the file
 def process_file(file, report):
     root = ''
-    if (file != None):
+    if (file is not None):
         root = os.path.dirname(os.path.abspath(file))
         try:
             input = open(file, 'r', 1)
@@ -41,7 +41,7 @@ def process_file(file, report):
     filename = None
     for line in input.readlines():
         result = line_prog.search(line)
-        if result != None:
+        if result is not None:
             report[result.group(1)] = [result.group(3), result.group(2)]
         else:
             m = loc_pat.search(line)

@@ -85,7 +85,7 @@ class CoverageFile:
         for line in content:
             l = LineInfo(line)
             if current_line >= len(self.lines):
-                self.lines.append(l);
+                self.lines.append(l)
             else:
                 self.lines[current_line].add_to_exercized_count(l.exercized_times())
 
@@ -136,7 +136,7 @@ def look_for_coverage_files(start_path):
                 # Only add files with base names in our file set
                 if base_name in file_set:
                     path = root + '/' + f
-                    if coverage_map.get(base_name) == None:
+                    if coverage_map.get(base_name) is None:
                         if debug == True:
                             print 'Parsing file ' + base_name + ' for the first time.'
                         cf = CoverageFile(path)
