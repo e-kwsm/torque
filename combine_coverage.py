@@ -15,7 +15,7 @@ class LineInfo:
         self.is_blank = False
         trimmed = raw_line.strip()
         
-        if debug == True:
+        if debug:
             print 'raw: ' + raw_line
             print 'trimmed: \'' + trimmed + '\''
 
@@ -31,8 +31,8 @@ class LineInfo:
             self.num_exercized = int(nums[0])
             self.line_num = int(nums[1])
 
-        if debug == True:
-            if self.is_blank == False:
+        if debug:
+            if not self.is_blank:
                 print 'Line ' + str(self.line_num) + ' has been exercized ' + str(self.num_exercized) + ' times.'
             else:
                 print 'Line ' + str(self.line_num) + ' is blank: ' + trimmed
@@ -137,16 +137,16 @@ def look_for_coverage_files(start_path):
                 if base_name in file_set:
                     path = root + '/' + f
                     if coverage_map.get(base_name) is None:
-                        if debug == True:
+                        if debug:
                             print 'Parsing file ' + base_name + ' for the first time.'
                         cf = CoverageFile(path)
                         cf.parse_file()
                         coverage_map[base_name] = cf
                         
-                        if debug == True:
+                        if debug:
                             print base_name + ' has ' + str(cf.get_total_lines()) + ' lines.'
                     else:
-                        if debug == True:
+                        if debug:
                             print 'Appending file ' + base_name + '.'
                         coverage_map[base_name].append_file(path)
     

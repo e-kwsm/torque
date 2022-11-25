@@ -44,14 +44,14 @@ def create_direc(pbsvar):
     os.chdir(pbsvar + "/server_priv/jobs")
     stat_info = os.stat(mypath)
     for x in range(0, 10):
-        if (False == os.path.isdir(str(x))):
+        if (not os.path.isdir(str(x))):
             os.mkdir(str(x))
             os.chown(mypath + "/" + str(x), stat_info.st_uid, stat_info.st_gid)
     mypath = pbsvar + "/server_priv/arrays"
     os.chdir(pbsvar + "/server_priv/arrays")
     stat_info = os.stat(mypath)
     for x in range(0, 10):
-        if (False == os.path.isdir(str(x))):
+        if (not os.path.isdir(str(x))):
             os.mkdir(str(x))
             os.chown(mypath + "/" + str(x), stat_info.st_uid, stat_info.st_gid)
     print("Directories Created Successfully")
@@ -144,11 +144,11 @@ def main(pbsvar):
         else:
             assert False, "unhandled option"
 
-    if True == opt_createdirs:
+    if opt_createdirs:
         create_direc(pbsvar)
-    if True == opt_mvfiles:
+    if opt_mvfiles:
         move_file(pbsvar)
-    if (False == opt_createdirs and False == opt_mvfiles):
+    if (not opt_createdirs and not opt_mvfiles):
         usage()
         sys.exit(2)
 
@@ -161,13 +161,13 @@ is_admin = os.getuid() == 0
 
 # Checks to see if user has root privs
 # if not they get kicked out
-if (False == is_admin):
+if (not is_admin):
     sys.stderr.write("Error: Must be run with root privileges!!\n")
     sys.exit(1)
 
 PBS_HOME = os.environ.get('PBS_HOME', '/var/spool/torque')
 
-if (False == os.path.exists(PBS_HOME)):
+if (not os.path.exists(PBS_HOME)):
     sys.stderr.write("ERROR: Path to PBS HOME does not exist\n")
     sys.exit(1)
 

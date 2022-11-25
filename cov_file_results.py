@@ -22,7 +22,7 @@ def get_testdirs(dir):
     check_val = dir
     check_val += "/"
     check_val += f
-    if os.path.isdir(check_val) != True:
+    if not os.path.isdir(check_val):
       try:
         tmp_list.remove(f)
       except ValueError:
@@ -55,7 +55,7 @@ def get_data(dir, dir_list, src_list):
     check_val = dir
     check_val += "/"
     check_val += f
-    if os.path.isdir(check_val) != True:
+    if not os.path.isdir(check_val):
       try:
         tmp_list.remove(f)
       except ValueError:
@@ -89,7 +89,7 @@ def generate_data(dir, dir_list, src_list):
 
   # Get rid of non-directories
   for f in flist:
-    if os.path.isdir(f) != True:
+    if not os.path.isdir(f):
       try:
         worklist.remove(f)
       except ValueError:
