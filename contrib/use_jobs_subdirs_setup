@@ -63,7 +63,7 @@ def create_direc(pbsvar):
 # before the first non-digit to know which
 # directory to put job file in
 def get_file_num(myfilename):
-    m = re.search('^\d*(\d)[^\d]', myfilename)
+    m = re.search(r'^\d*(\d)[^\d]', myfilename)
     try:
         return m.group(1)
     except Exception:

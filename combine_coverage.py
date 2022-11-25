@@ -19,7 +19,7 @@ class LineInfo:
             print 'raw: ' + raw_line
             print 'trimmed: \'' + trimmed + '\''
 
-        nums = re.findall('\d+', trimmed)
+        nums = re.findall(r'\d+', trimmed)
         self.num_exercized = 0
 
         if trimmed[0] == '#':
